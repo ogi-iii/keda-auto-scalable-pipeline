@@ -80,7 +80,7 @@ kubectl get pods -n pipeline
 
 - see also the number of pods in pipeline deployment
 
-    **They will be scaled-out automatically.**
+    **They will be scaled-out automatically. (It takes a few minutes.)**
 
     ```bash
     kubectl get pods -n pipeline
@@ -96,7 +96,7 @@ kubectl get pods -n pipeline
 
 ### 2. Check The Number of Pods in Pipeline Deployment
 
-**They will be scaled-in automatically. (It takes a few minutes.)**
+**They will be scaled-in automatically. (It takes about 5 to 10 minutes.)**
 
 ```bash
 kubectl get pods -n pipeline
