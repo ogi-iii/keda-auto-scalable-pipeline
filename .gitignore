@@ -1,0 +1,5 @@
+.vscode
+.DS_Store
+
+# source codes cloned from GitHub
+kafka-streams-pipeline/

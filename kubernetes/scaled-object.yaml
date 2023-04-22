@@ -1,0 +1,25 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: streams-pipeline-app-scaler
+  namespace: pipeline
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1                # Optional. Default: apps/v1
+    kind:       Deployment             # Optional. Default: Deployment
+    name:       streams-pipeline-app   # Mandatory. Must be in the same namespace as the ScaledObject
+  pollingInterval:  5                  # Optional. Default: 30 seconds
+  cooldownPeriod:   10                 # Optional. Default: 300 seconds
+  idleReplicaCount: 0                  # Optional. Must be less than minReplicaCount
+  minReplicaCount:  1                  # Optional. Default: 1
+  maxReplicaCount:  5                  # Optional. Default: 100 (up to the number of partitions in Kafka Brokers)
+  triggers:
+  - type: kafka
+    metadata:
+      bootstrapServers: host.docker.internal:29092
+      consumerGroup: streams-pipeline-app
+      topic: pizzaOrders
+      lagThreshold: '10'
+      offsetResetPolicy: latest
+      allowIdleConsumers: "false"
+      version: 1.0.0

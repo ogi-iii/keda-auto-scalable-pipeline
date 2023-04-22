@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streams-pipeline-app
+  labels:
+    app: streams-pipeline-app
+  namespace: pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streams-pipeline-app
+  template:
+    metadata:
+      labels:
+        app: streams-pipeline-app
+    spec:
+      containers:
+      - name: streams-pipeline-app
+        image: streams-pipeline-app
+        imagePullPolicy: Never
