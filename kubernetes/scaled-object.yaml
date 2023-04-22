@@ -16,7 +16,7 @@ spec:
   triggers:
   - type: kafka
     metadata:
-      bootstrapServers: localhost:19092,host.docker.internal:29092
+      bootstrapServers: host.docker.internal:29092
       consumerGroup: streams-pipeline-app
       topic: pizzaOrders
       lagThreshold: '10'
