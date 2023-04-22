@@ -16,5 +16,5 @@ cd ..
 # deploy the scalable pipeline app with auto-scaler
 docker image build -t streams-pipeline-app .
 kubectl create namespace pipeline
-kubectl apply -f pipeline-deployment.yaml
-kubectl apply -f scaled-object.yaml
+kubectl apply -f ./kubernetes/pipeline-deployment.yaml
+kubectl apply -f ./kubernetes/scaled-object.yaml
