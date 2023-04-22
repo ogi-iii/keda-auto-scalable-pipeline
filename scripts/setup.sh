@@ -17,4 +17,13 @@ cd ..
 docker image build -t streams-pipeline-app .
 kubectl create namespace pipeline
 kubectl apply -f ./kubernetes/pipeline-deployment.yaml
-kubectl apply -f ./kubernetes/scaled-object.yaml
+
+STDOUT=$(kubectl apply -f ./kubernetes/scaled-object.yaml 3>&2 2>&1 1>&3)
+ERR_STR="unable"
+until [[ "$STDOUT" != *"$ERR_STR"* ]]
+do
+    kubectl delete -f ./kubernetes/scaled-object.yaml
+    echo "retry to connect Kafka Broker..."
+    sleep 5
+    STDOUT=$(kubectl apply -f ./kubernetes/scaled-object.yaml 3>&2 2>&1 1>&3)
+done
