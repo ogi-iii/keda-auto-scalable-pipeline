@@ -12,3 +12,5 @@ docker image rmi -f $(docker image ls streams-pipeline-app --format "{{.ID}}")
 # stop and remove Apache Kafka, Mongo DB, and the other tools
 cd kafka-streams-pipeline/
 docker compose -f ./demo/docker-compose.yml down -v --rmi all
+
+echo "Shutdown process was finished."

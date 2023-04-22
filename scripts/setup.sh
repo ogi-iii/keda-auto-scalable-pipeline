@@ -27,3 +27,5 @@ do
     sleep 5
     STDOUT=$(kubectl apply -f ./kubernetes/scaled-object.yaml 3>&2 2>&1 1>&3)
 done
+
+echo "Setup process was finished."
