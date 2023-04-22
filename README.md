@@ -43,8 +43,8 @@ graph TD;
 - Mac or Linux
 - Git
 - Docker
-- Kubernetes
-- Helm
+- Kubernetes (a cluster & kubectl)
+- Helm (ver.3)
 
 ## Quick Start Usage
 
@@ -68,14 +68,6 @@ kubectl get pods -n pipeline
 
 ### 4. Observe Pipeline Processing
 
-- see the number of pods in pipeline deployment
-
-    **They will be scaled-out automatically.**
-
-    ```bash
-    kubectl get pods -n pipeline
-    ```
-
 - see the sink data on the web console: 'Mongo Express'
 
     http://localhost:18081/db/pipelineSink/pizzaOrderAnalysis/
@@ -83,6 +75,16 @@ kubectl get pods -n pipeline
 - see also the source data on the web console: 'Confluent Control Center'
 
     http://localhost:9021/clusters/
+
+        controlcenter.cluster > Topics > pizzaOrders > Messages
+
+- see also the number of pods in pipeline deployment
+
+    **They will be scaled-out automatically.**
+
+    ```bash
+    kubectl get pods -n pipeline
+    ```
 
 ## Cleanup
 
