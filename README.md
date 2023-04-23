@@ -76,15 +76,25 @@ kubectl get pods -n pipeline
 
     http://localhost:9021/clusters/
 
-        controlcenter.cluster > Topics > pizzaOrders > Messages
+    Access the following contents:
+
+    `controlcenter.cluster > Topics > pizzaOrders > Messages`
 
 - see also the number of pods in pipeline deployment
 
-    **They will be scaled-out automatically. (It takes a few minutes.)**
+    **They will be 'scaled-out' automatically. (It takes a few minutes.)**
 
     ```bash
     kubectl get pods -n pipeline
     ```
+
+## Troubleshoot
+
+If some pods are Error or Evicted, you can remove them with the following script.
+
+```bash
+./scripts/tools/remove-anomaly-pods.sh
+```
 
 ## Cleanup
 
@@ -96,7 +106,7 @@ kubectl get pods -n pipeline
 
 ### 2. Check The Number of Pods in Pipeline Deployment
 
-**They will be scaled-in automatically. (It takes about 5 to 10 minutes.)**
+**They will be 'scaled-in' automatically. (It takes about 5 to 7 minutes.)**
 
 ```bash
 kubectl get pods -n pipeline
@@ -106,14 +116,6 @@ kubectl get pods -n pipeline
 
 ```bash
 ./scripts/shutdown.sh
-```
-
-## Troubleshoot
-
-If some pods are Error or Evicted, you can remove them with the following script.
-
-```bash
-./scripts/tools/remove-anomaly-pods.sh
 ```
 
 ## See Also
